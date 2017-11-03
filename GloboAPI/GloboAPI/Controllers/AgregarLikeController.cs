@@ -53,6 +53,50 @@ namespace GloboAPI.Controllers
                         con.Close();
                     }
                 }
+                int n = 0;
+                using (MySqlConnection con = new MySqlConnection(constr))
+                {
+                    
+                    string query = "SELECT Count(Id) FROM voto WHERE PublicacionID = '" + followed + "'";
+                    using (MySqlCommand cmd = new MySqlCommand(query))
+                    {
+                        cmd.Connection = con;
+                        con.Open();
+                        using (MySqlDataReader sdr = cmd.ExecuteReader())
+                        {
+                            while (sdr.Read())
+                            {
+                                n = Convert.ToInt32(sdr["Count(Id)"]);
+                            }
+                        }
+                        con.Close();
+                    }
+                }
+
+                    if( n == 5)
+                    {
+                    using (MySqlConnection con = new MySqlConnection(constr))
+                    {
+                        string query = "UPDATE Publicacion SET Ganador = '"+follower+"' WHERE Id = '"+followed+"'";
+                        using (MySqlCommand cmd = new MySqlCommand(query))
+                        {
+                            cmd.Connection = con;
+                            con.Open();
+                            using (MySqlDataReader sdr = cmd.ExecuteReader())
+                            {
+                                while (sdr.Read())
+                                {
+                                    n = Convert.ToInt32(sdr["Count(Id)"]);
+                                }
+                            }
+                            con.Close();
+                        }
+                    }
+
+                }
+
+
+
                 return 1;
             }
             else

@@ -17,35 +17,62 @@ namespace GloboAPI.Controllers
         [System.Web.Http.HttpGet]
         public int Agregar(string id)
         {
-            
             string constr = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
+            bool flag = true;
+
             using (MySqlConnection con = new MySqlConnection(constr))
             {
-                string query = "UPDATE publicacion SET Estado = 0 WHERE DipositivoID = 1 ";
+                string query = "SELECT * FROM publicacion WHERE ID = '" + id + "'";
                 using (MySqlCommand cmd = new MySqlCommand(query))
                 {
                     cmd.Connection = con;
                     con.Open();
                     using (MySqlDataReader sdr = cmd.ExecuteReader())
                     {
+                        while (sdr.Read())
+                        {
+                            flag = false;
+                        }
                     }
                     con.Close();
                 }
             }
-            using (MySqlConnection con = new MySqlConnection(constr))
+
+            if (flag)
             {
-                string query = "INSERT INTO publicacion (Id, Tipo, NLikes, DipositivoID, Estado) VALUES ('" + id + "',1,0,1,1)";
-                using (MySqlCommand cmd = new MySqlCommand(query))
+                using (MySqlConnection con = new MySqlConnection(constr))
                 {
-                    cmd.Connection = con;
-                    con.Open();
-                    using (MySqlDataReader sdr = cmd.ExecuteReader())
+                    string query = "UPDATE publicacion SET Estado = 0 WHERE DipositivoID = 1 ";
+                    using (MySqlCommand cmd = new MySqlCommand(query))
                     {
+                        cmd.Connection = con;
+                        con.Open();
+                        using (MySqlDataReader sdr = cmd.ExecuteReader())
+                        {
+                        }
+                        con.Close();
                     }
-                    con.Close();
                 }
+                using (MySqlConnection con = new MySqlConnection(constr))
+                {
+                    string query = "INSERT INTO publicacion (Id, Tipo, NLikes, DipositivoID, Estado) VALUES ('" + id + "',1,0,1,1)";
+                    using (MySqlCommand cmd = new MySqlCommand(query))
+                    {
+                        cmd.Connection = con;
+                        con.Open();
+                        using (MySqlDataReader sdr = cmd.ExecuteReader())
+                        {
+                        }
+                        con.Close();
+                    }
+                }
+                return 1;
             }
-            return 1;
+            else
+            {
+                return 0;
+            }
+           
             
         }
     }

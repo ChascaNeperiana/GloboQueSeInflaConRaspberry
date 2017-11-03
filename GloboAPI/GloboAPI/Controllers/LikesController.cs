@@ -22,7 +22,7 @@ namespace GloboAPI.Controllers
             string pub_id = "NONE";
              using (MySqlConnection con = new MySqlConnection(constr))
             {
-                string query = "SELECT * FROM Publicacion WHERE DipositivoID = " + id;
+                string query = "SELECT * FROM Publicacion WHERE Estado = 1 AND DipositivoID = " + id;
                 using (MySqlCommand cmd = new MySqlCommand(query))
                 {
                     cmd.Connection = con;
