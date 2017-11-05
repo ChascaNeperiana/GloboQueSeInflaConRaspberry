@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace GloboAPI.Models
+namespace Common
 {
     public class Dispositivo
     {
@@ -11,6 +12,5 @@ namespace GloboAPI.Models
         public int Tipo { get; set; }
         public bool Estado { get; set; }
         public string Adress { get; set; }
-
     }
 }

@@ -1,0 +1,6 @@
+C:\Users\quiro\source\repos\globo\GloboAPI\Common\bin\Debug\Common.dll
+C:\Users\quiro\source\repos\globo\GloboAPI\Common\bin\Debug\Common.pdb
+C:\Users\quiro\source\repos\globo\GloboAPI\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
+C:\Users\quiro\source\repos\globo\GloboAPI\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+C:\Users\quiro\source\repos\globo\GloboAPI\Common\obj\Debug\Common.dll
+C:\Users\quiro\source\repos\globo\GloboAPI\Common\obj\Debug\Common.pdb

@@ -198,3 +198,5 @@ C:\Users\quiro\source\repos\globo\GloboAPI\GloboAPI\bin\EntityFramework.xml
 C:\Users\quiro\source\repos\globo\GloboAPI\GloboAPI\bin\EntityFramework.SqlServer.xml
 C:\Users\quiro\source\repos\globo\GloboAPI\GloboAPI\bin\MySql.Data.xml
 C:\Users\quiro\source\repos\globo\GloboAPI\GloboAPI\bin\MySql.Data.Entity.EF6.xml
+C:\Users\quiro\source\repos\globo\GloboAPI\GloboAPI\bin\Common.dll
+C:\Users\quiro\source\repos\globo\GloboAPI\GloboAPI\bin\Common.pdb
