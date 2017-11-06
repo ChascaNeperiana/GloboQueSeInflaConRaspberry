@@ -1,4 +1,5 @@
 ﻿using Common;
+using DBConnection;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -18,30 +19,22 @@ namespace GloboAPI.Controllers
         { 
             List<Dispositivo> customers = new List<Dispositivo>();
             string constr = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
+            Conexion conexion = new Conexion(constr);
 
-             using (MySqlConnection con = new MySqlConnection(constr))
+            string query = "SELECT * FROM Dispositivo";
+            MySqlDataReader sdr = conexion.Query(query);
+            while (sdr.Read())
             {
-                string query = "SELECT * FROM Dispositivo";
-                using (MySqlCommand cmd = new MySqlCommand(query))
+                customers.Add(new Dispositivo
                 {
-                    cmd.Connection = con;
-                    con.Open();
-                    using (MySqlDataReader sdr = cmd.ExecuteReader())
-                    {
-                        while (sdr.Read())
-                        {
-                            customers.Add(new Dispositivo
-                            {
-                                ID = Convert.ToInt32(sdr["Id"]),
-                                Adress = sdr["Adress"].ToString(),
-                                Estado = Convert.ToBoolean(sdr["Estado"]),
-                                Tipo = Convert.ToInt32(sdr["Tipo"]),
-                            });
-                        }
-                    }
-                    con.Close();
-                }
+                    ID = Convert.ToInt32(sdr["Id"]),
+                    Adress = sdr["Adress"].ToString(),
+                    Estado = Convert.ToBoolean(sdr["Estado"]),
+                    Tipo = Convert.ToInt32(sdr["Tipo"]),
+                });
             }
+            conexion.Close();
+
             return customers;
         }
     }

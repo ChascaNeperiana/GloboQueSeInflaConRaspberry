@@ -1,0 +1,15 @@
+C:\Users\quiro\source\repos\globo\GloboAPI\DBConnection\bin\Debug\DBConnection.dll.config
+C:\Users\quiro\source\repos\globo\GloboAPI\DBConnection\bin\Debug\DBConnection.dll
+C:\Users\quiro\source\repos\globo\GloboAPI\DBConnection\bin\Debug\DBConnection.pdb
+C:\Users\quiro\source\repos\globo\GloboAPI\DBConnection\bin\Debug\EntityFramework.dll
+C:\Users\quiro\source\repos\globo\GloboAPI\DBConnection\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\quiro\source\repos\globo\GloboAPI\DBConnection\bin\Debug\MySql.Data.dll
+C:\Users\quiro\source\repos\globo\GloboAPI\DBConnection\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\quiro\source\repos\globo\GloboAPI\DBConnection\bin\Debug\EntityFramework.xml
+C:\Users\quiro\source\repos\globo\GloboAPI\DBConnection\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\quiro\source\repos\globo\GloboAPI\DBConnection\bin\Debug\MySql.Data.xml
+C:\Users\quiro\source\repos\globo\GloboAPI\DBConnection\bin\Debug\MySql.Data.Entity.EF6.xml
+C:\Users\quiro\source\repos\globo\GloboAPI\DBConnection\obj\Debug\DBConnection.csprojResolveAssemblyReference.cache
+C:\Users\quiro\source\repos\globo\GloboAPI\DBConnection\obj\Debug\DBConnection.csproj.CoreCompileInputs.cache
+C:\Users\quiro\source\repos\globo\GloboAPI\DBConnection\obj\Debug\DBConnection.dll
+C:\Users\quiro\source\repos\globo\GloboAPI\DBConnection\obj\Debug\DBConnection.pdb

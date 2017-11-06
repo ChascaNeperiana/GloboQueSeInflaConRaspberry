@@ -1,4 +1,5 @@
 ﻿using Common;
+using DBConnection;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -20,37 +21,23 @@ namespace GloboAPI.Controllers
             string constr = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
             int n = 0;
             string pub_id = "NONE";
-             using (MySqlConnection con = new MySqlConnection(constr))
+            Conexion conexion = new Conexion(constr);
+
+            string query = "SELECT * FROM Publicacion WHERE Estado = 1 AND DipositivoID = " + id;
+            MySqlDataReader sdr = conexion.Query(query);
+            while (sdr.Read())
             {
-                string query = "SELECT * FROM Publicacion WHERE Estado = 1 AND DipositivoID = " + id;
-                using (MySqlCommand cmd = new MySqlCommand(query))
-                {
-                    cmd.Connection = con;
-                    con.Open();
-                    using (MySqlDataReader sdr = cmd.ExecuteReader())
-                    {
-                        while (sdr.Read())
-                        {
-                            pub_id = sdr["Id"].ToString();
-                        }
-                    }
-                    con.Close();
-                }
-                query = "SELECT Count(Id) FROM voto WHERE PublicacionID = '" + pub_id + "'";
-                using (MySqlCommand cmd = new MySqlCommand(query))
-                {
-                    cmd.Connection = con;
-                    con.Open();
-                    using (MySqlDataReader sdr = cmd.ExecuteReader())
-                    {
-                        while (sdr.Read())
-                        {
-                            n = Convert.ToInt32(sdr["Count(Id)"]);
-                        }
-                    }
-                    con.Close();
-                }
+                pub_id = sdr["Id"].ToString();
             }
+
+            query = "SELECT Count(Id) FROM voto WHERE PublicacionID = '" + pub_id + "'";
+            sdr = conexion.Query(query);
+            while (sdr.Read())
+            {
+                n = Convert.ToInt32(sdr["Count(Id)"]);
+            }
+
+            conexion.Close();
             return n;
         }
         

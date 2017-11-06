@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Mvc;
+using DBConnection;
 
 namespace GloboAPI.Controllers
 {
@@ -21,86 +22,43 @@ namespace GloboAPI.Controllers
             string follower = strs[1];
             string constr = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
             bool flag = true;
-            using (MySqlConnection con = new MySqlConnection(constr))
+
+            Conexion conexion = new Conexion(constr);
+            string query = "SELECT * FROM voto WHERE Id = '" + id + "'";
+            MySqlDataReader sdr = conexion.Query(query);
+            while (sdr.Read())
             {
-                string query = "SELECT * FROM voto WHERE Id = '" + id + "'";
-                using (MySqlCommand cmd = new MySqlCommand(query))
-                {
-                    cmd.Connection = con;
-                    con.Open();
-                    using (MySqlDataReader sdr = cmd.ExecuteReader())
-                    {
-                        while (sdr.Read())
-                        {
-                            flag = false;
-                        }
-                    }
-                    con.Close();
-                }
+                flag = false;
             }
+            conexion.Close();
             if (flag)
             {
-                using (MySqlConnection con = new MySqlConnection(constr))
-                {
-                    string query = "INSERT INTO voto (Id, PublicacionID, PerfilID, Nombre) VALUES ('" + id + "','" + followed + "','" + follower + "','" + follower + "')";
-                    using (MySqlCommand cmd = new MySqlCommand(query))
-                    {
-                        cmd.Connection = con;
-                        con.Open();
-                        using (MySqlDataReader sdr = cmd.ExecuteReader())
-                        {
-                        }
-                        con.Close();
-                    }
-                }
+                query = "INSERT INTO voto (Id, PublicacionID, PerfilID, Nombre) VALUES ('" + id + "','" + followed + "','" + follower + "','" + follower + "')";
+                sdr = conexion.Query(query);
                 int n = 0;
-                using (MySqlConnection con = new MySqlConnection(constr))
+
+                query = "SELECT Count(Id) FROM voto WHERE PublicacionID = '" + followed + "'";
+                sdr = conexion.Query(query);
+                while (sdr.Read())
                 {
-                    
-                    string query = "SELECT Count(Id) FROM voto WHERE PublicacionID = '" + followed + "'";
-                    using (MySqlCommand cmd = new MySqlCommand(query))
-                    {
-                        cmd.Connection = con;
-                        con.Open();
-                        using (MySqlDataReader sdr = cmd.ExecuteReader())
-                        {
-                            while (sdr.Read())
-                            {
-                                n = Convert.ToInt32(sdr["Count(Id)"]);
-                            }
-                        }
-                        con.Close();
-                    }
+                    n = Convert.ToInt32(sdr["Count(Id)"]);
                 }
 
-                    if( n == 5)
+                if ( n == 5)
+                {
+                    query = "UPDATE Publicacion SET Ganador = '"+follower+"' WHERE Id = '"+followed+"'";
+                    sdr = conexion.Query(query);
+                    while (sdr.Read())
                     {
-                    using (MySqlConnection con = new MySqlConnection(constr))
-                    {
-                        string query = "UPDATE Publicacion SET Ganador = '"+follower+"' WHERE Id = '"+followed+"'";
-                        using (MySqlCommand cmd = new MySqlCommand(query))
-                        {
-                            cmd.Connection = con;
-                            con.Open();
-                            using (MySqlDataReader sdr = cmd.ExecuteReader())
-                            {
-                                while (sdr.Read())
-                                {
-                                    n = Convert.ToInt32(sdr["Count(Id)"]);
-                                }
-                            }
-                            con.Close();
-                        }
+                        n = Convert.ToInt32(sdr["Count(Id)"]);
                     }
-
                 }
-
-
-
+                conexion.Close();
                 return 1;
             }
             else
             {
+                conexion.Close();
                 return 0;
             }
             
