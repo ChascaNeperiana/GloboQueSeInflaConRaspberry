@@ -18,8 +18,7 @@ namespace GloboAPI.Controllers
         public List<Dispositivo> Get()
         { 
             List<Dispositivo> customers = new List<Dispositivo>();
-            string constr = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
-            Conexion conexion = new Conexion(constr);
+            Conexion conexion = Conexion.Instancia;
 
             string query = "SELECT * FROM Dispositivo";
             MySqlDataReader sdr = conexion.Query(query);

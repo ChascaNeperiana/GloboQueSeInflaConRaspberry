@@ -10,11 +10,23 @@ namespace DBConnection
 {
     public class Conexion
     {
-        private string constr;
         private MySqlConnection con;
-        public Conexion(string constr)
+        private static Conexion instance = null;
+        
+        public static Conexion Instancia
         {
-            this.constr = constr;
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new Conexion();
+                }
+                return instance;
+            }
+        }
+        public Conexion()
+        {
+            string constr = "Data Source=localhost;port=3306;Initial Catalog=globodb;User Id=root;password=A01261357";
             con = new MySqlConnection(constr);
             
         }

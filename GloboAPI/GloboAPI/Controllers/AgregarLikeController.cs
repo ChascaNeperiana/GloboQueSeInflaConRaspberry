@@ -20,10 +20,9 @@ namespace GloboAPI.Controllers
             string[] strs = id.Split(',');
             string followed = strs[0];
             string follower = strs[1];
-            string constr = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
             bool flag = true;
 
-            Conexion conexion = new Conexion(constr);
+            Conexion conexion = Conexion.Instancia;
             string query = "SELECT * FROM voto WHERE Id = '" + id + "'";
             MySqlDataReader sdr = conexion.Query(query);
             while (sdr.Read())
