@@ -8,23 +8,23 @@ using System.Threading.Tasks;
 
 namespace DBConnection
 {
-    public class Conexion
+    public class Conexion_MySql
     {
         private MySqlConnection con;
-        private static Conexion instance = null;
+        private static Conexion_MySql instance = null;
         
-        public static Conexion Instancia
+        public static Conexion_MySql Instancia
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new Conexion();
+                    instance = new Conexion_MySql();
                 }
                 return instance;
             }
         }
-        public Conexion()
+        public Conexion_MySql()
         {
             string constr = "Data Source=localhost;port=3306;Initial Catalog=globodb;User Id=root;password=A01261357";
             con = new MySqlConnection(constr);
