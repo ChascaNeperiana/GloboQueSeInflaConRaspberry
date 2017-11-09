@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConexionBridge.cs" />
     <Compile Include="Conexion_MySQL.cs" />
     <Compile Include="IConexion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

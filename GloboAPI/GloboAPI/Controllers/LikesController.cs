@@ -20,7 +20,7 @@ namespace GloboAPI.Controllers
             List<Publicacion> dispositivo = new List<Publicacion>();
             int n = 0;
             string pub_id = "NONE";
-            Conexion_MySql conexion = Conexion_MySql.Instancia;
+            Conexion_MySql conexion = ConexionBridge.MySql();
 
             string query = "SELECT * FROM Publicacion WHERE Estado = 1 AND DipositivoID = " + id;
             MySqlDataReader sdr = conexion.Query(query);

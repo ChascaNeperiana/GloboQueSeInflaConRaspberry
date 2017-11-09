@@ -22,7 +22,7 @@ namespace GloboAPI.Controllers
             string follower = strs[1];
             bool flag = true;
 
-            Conexion_MySql conexion = Conexion_MySql.Instancia;
+            Conexion_MySql conexion = ConexionBridge.MySql();
             string query = "SELECT * FROM voto WHERE Id = '" + id + "'";
             MySqlDataReader sdr = conexion.Query(query);
             while (sdr.Read())
