@@ -26,11 +26,17 @@ namespace GloboAPI.Controllers
             {
                 publicacion = sdr["Id"].ToString();
             }
-            query = "UPDATE publicacion SET Pendiente = 0 WHERE Id = '" + publicacion + "'";
-            conexion.Query(query);
-            conexion.Close();
 
-            return publicacion;
+            if(publicacion != null)
+            {
+                query = "UPDATE publicacion SET Pendiente = 0 WHERE Id = '" + publicacion + "'";
+                conexion.Query(query);
+                conexion.Close();
+
+                return publicacion;
+            }
+
+            return "NADA";
         }
     }
 }
