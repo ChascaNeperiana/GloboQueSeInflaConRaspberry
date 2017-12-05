@@ -192,7 +192,7 @@
     <Compile Include="Controllers\PublicacionController.cs" />
     <Compile Include="Controllers\LikesController.cs" />
     <Compile Include="Controllers\AgregarLikeController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\PendienteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

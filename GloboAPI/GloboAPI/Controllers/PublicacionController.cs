@@ -33,7 +33,7 @@ namespace GloboAPI.Controllers
                 query = "UPDATE publicacion SET Estado = 0 WHERE DipositivoID = 1 ";
                 conexion.Query(query);
                 
-                query = "INSERT INTO publicacion (Id, Tipo, NLikes, DipositivoID, Estado) VALUES ('" + id + "',1,0,1,1)";
+                query = "INSERT INTO publicacion (Id, Tipo, NLikes, DipositivoID, Estado, Pendiente) VALUES ('" + id + "',1,0,1,1,1)";
                 conexion.Query(query);
 
                 conexion.Close();
