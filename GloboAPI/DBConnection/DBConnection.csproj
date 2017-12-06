@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuilderFacade.cs" />
     <Compile Include="ConexionBuilder.cs" />
     <Compile Include="Conexion_MySQL.cs" />
     <Compile Include="Conexion.cs" />

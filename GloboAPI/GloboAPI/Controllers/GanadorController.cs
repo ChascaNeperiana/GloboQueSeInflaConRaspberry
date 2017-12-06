@@ -18,7 +18,8 @@ namespace GloboAPI.Controllers
         public string Get()
         {
             string ganador = null;
-            Conexion_MySql conexion = ConexionBuilder.MySql();
+            BuilderFacade builder = new ConexionBuilder();
+            Conexion_MySql conexion = builder.MySql();
 
             string query = "SELECT * FROM Publicacion WHERE Estado = 1";
             MySqlDataReader sdr = conexion.Query(query);

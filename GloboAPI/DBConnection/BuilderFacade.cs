@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace DBConnection
 {
-    public class ConexionBuilder : BuilderFacade
+    public interface BuilderFacade
     {
-
-        public Conexion_MySql MySql()
-        {
-            return Conexion_MySql.Instancia;
-        }
+        Conexion_MySql MySql();
     }
 }

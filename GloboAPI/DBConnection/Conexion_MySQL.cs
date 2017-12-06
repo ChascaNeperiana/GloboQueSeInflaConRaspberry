@@ -10,6 +10,7 @@ namespace DBConnection
 {
     public class Conexion_MySql
     {
+        //COMMAND
         private MySqlConnection con;
         private static Conexion_MySql instance = null;
         
