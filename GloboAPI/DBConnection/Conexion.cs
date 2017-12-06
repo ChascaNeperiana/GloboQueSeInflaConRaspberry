@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace DBConnection
 {
-    public interface IConexion
+    public abstract class Conexion
     {
-        void Close();
     }
 }

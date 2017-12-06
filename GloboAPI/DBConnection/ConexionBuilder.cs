@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DBConnection
 {
-    public class ConexionBridge
+    public class ConexionBuilder
     {
         public static Conexion_MySql MySql()
         {

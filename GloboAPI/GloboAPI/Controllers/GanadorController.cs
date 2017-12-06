@@ -13,30 +13,22 @@ using System.Web.Mvc;
 
 namespace GloboAPI.Controllers
 {
-    public class PendienteController : ApiController
+    public class GanadorController : ApiController
     {
         public string Get()
         {
-            string publicacion = null;
+            string ganador = null;
             Conexion_MySql conexion = ConexionBuilder.MySql();
 
-            string query = "SELECT * FROM Publicacion WHERE Pendiente = 1";
+            string query = "SELECT * FROM Publicacion WHERE Estado = 1";
             MySqlDataReader sdr = conexion.Query(query);
             while (sdr.Read())
             {
-                publicacion = sdr["Id"].ToString();
+                ganador = sdr["Ganador"].ToString();
             }
 
-            if(publicacion != null)
-            {
-                query = "UPDATE publicacion SET Pendiente = 0 WHERE Id = '" + publicacion + "'";
-                conexion.Query(query);
-                conexion.Close();
-
-                return publicacion;
-            }
-
-            return "NADA";
+            return ganador;
         }
+        
     }
 }

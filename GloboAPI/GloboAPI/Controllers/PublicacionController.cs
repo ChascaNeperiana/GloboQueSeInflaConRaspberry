@@ -17,7 +17,7 @@ namespace GloboAPI.Controllers
         [System.Web.Http.HttpGet]
         public int Agregar(string id)
         {
-            Conexion_MySql conexion = ConexionBridge.MySql();
+            Conexion_MySql conexion = ConexionBuilder.MySql();
 
             bool flag = true;
             string query = "SELECT * FROM publicacion WHERE ID = '" + id + "'";
